@@ -1,0 +1,6 @@
+c:\users\pgarrard\documents\visual studio 2013\Projects\HttpStstusCodeScraper\HttpStstusCodeScraper\bin\Debug\HttpStstusCodeScraper.exe.config
+c:\users\pgarrard\documents\visual studio 2013\Projects\HttpStstusCodeScraper\HttpStstusCodeScraper\obj\Debug\HttpStstusCodeScraper.csprojResolveAssemblyReference.cache
+c:\users\pgarrard\documents\visual studio 2013\Projects\HttpStstusCodeScraper\HttpStstusCodeScraper\bin\Debug\HttpStstusCodeScraper.exe
+c:\users\pgarrard\documents\visual studio 2013\Projects\HttpStstusCodeScraper\HttpStstusCodeScraper\bin\Debug\HttpStstusCodeScraper.pdb
+c:\users\pgarrard\documents\visual studio 2013\Projects\HttpStstusCodeScraper\HttpStstusCodeScraper\obj\Debug\HttpStstusCodeScraper.exe
+c:\users\pgarrard\documents\visual studio 2013\Projects\HttpStstusCodeScraper\HttpStstusCodeScraper\obj\Debug\HttpStstusCodeScraper.pdb
