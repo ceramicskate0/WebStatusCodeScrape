@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 
-namespace HttpStstusCodeScraper
+namespace HttpStatusCodeScraper
 {
     class Program
     {
@@ -14,7 +14,7 @@ namespace HttpStstusCodeScraper
         public static string Outfile = "OUTPUT.csv";
         static void Main(string[] args)
         {
-            Console.WriteLine("Input File path that has URLs:");
+            Console.WriteLine("Input File (csv or 1 line txt) path that has URLs (format = 1 line per URL):");
             string path=Console.ReadLine();
             Console.WriteLine("Read In started.");
             ReadinURL(path);
@@ -48,9 +48,9 @@ namespace HttpStstusCodeScraper
         public static string Scrape(string Url)
         {
             string status="UNKNOWN";
-            HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create("http://"+Url);
+            HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create(Url);
             httpReq.AllowAutoRedirect = true;
-            httpReq.Timeout = 400;
+            httpReq.Timeout = 999;
             try
             {
                 HttpWebResponse httpRes = (HttpWebResponse)httpReq.GetResponse();
@@ -58,22 +58,23 @@ namespace HttpStstusCodeScraper
                 if (code >= 200 && code < 300)
                 {
                     status = code.ToString();
+                    File.AppendAllText(Outfile, httpReq.RequestUri.ToString() + "," + Url + "," + status + "\n"); 
                 }
                 else
                 {
                     status = code.ToString(); ;
+                    File.AppendAllText(Outfile, httpReq.RequestUri.ToString() + "," + Url + "," + status + "\n"); 
                 }
                 // Close the response.
-                httpRes.Close();
-                File.AppendAllText(Outfile, Url + "," + status);  
+                httpRes.Close(); 
             }
-            catch
+            catch (Exception e)
             {
-                status = "LINK LIKELY DOWN";
-                File.AppendAllText(Outfile, Url + "," + status+"\n");  
+                File.AppendAllText(Outfile, httpReq.RequestUri.ToString() + "," + Url + "," + e.Message.ToString() + "\n");  
             }
-            Console.WriteLine(Url + "Status: " + status);
+            Console.WriteLine(Url + "\nStatus: " + status);
             return status;
+            //916 total
         }
     }
 }
